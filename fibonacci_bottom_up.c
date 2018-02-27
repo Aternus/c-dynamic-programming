@@ -1,9 +1,10 @@
 /**
  * A program to calculate the n^th^ Fibonacci number
  *
- * Using Recursion
+ * Using the Bottom Up approach
  *
- * T(n) = O(2^n^)
+ * T(n) = O(n)
+ * Since we are building the memoization storage once.
  */
 
 #include <stdio.h>
@@ -59,16 +60,22 @@ int main(int argc, char *argv[])
  */
 uint64_t fib(int n)
 {
-    uint64_t result = 0;
     // base case
     if (n == 1 || n == 2)
     {
-        result = 1;
+        return 1;
     }
-    // recursion case
-    else
+
+    // create the storage array (bottom up)
+    uint64_t storage[n + 1];
+    storage[1] = 1;
+    storage[2] = 1;
+
+    // populate the storage
+    for (size_t i = 3; i <= n; i++)
     {
-        result = fib(n - 1) + fib(n - 2);
+        storage[i] = storage[i - 1] + storage[i - 2];
     }
-    return result;
+
+    return storage[n];
 }

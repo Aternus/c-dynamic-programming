@@ -1,18 +1,19 @@
 /**
  * A program to calculate the n^th^ Fibonacci number
  *
- * Using Recursion + Store (Memoize)
+ * Using Recursion and Memoization
  *
  * T(n) = number of calls to fib() * time = 2n + 1 * 1 = O(2n+1) ≈ O(n)
  */
 
 #include <stdio.h>
+#include <stdint.h> // uint64_t
 #include <stdlib.h>
 
 #include "performance.c"
 
 // function prototypes
-unsigned long long fib(int n, unsigned long long *memo);
+uint64_t fib(int n, uint64_t *memo);
 
 // main
 int main(int argc, char *argv[])
@@ -28,9 +29,10 @@ int main(int argc, char *argv[])
     int n = atoi(argv[1]);
 
     // validate that n is a positive integer
-    if (n < 1)
+    // no greater than 93 so that the result is in the supported range of 64bit CPU
+    if (n < 1 || n > 93)
     {
-        fprintf(stderr, "n must be a positive integer value\n");
+        fprintf(stderr, "0 < n <= 93\n");
         return 1;
     }
 
@@ -38,19 +40,19 @@ int main(int argc, char *argv[])
     rusage before, after;
     double time_calc = 0.0;
 
-    // allocate memory for the memoized array
-    unsigned long long *memo = calloc(n + 1, sizeof(unsigned long long));
+    // allocate memory for the memo array
+    uint64_t *memo = calloc(n + 1, sizeof(uint64_t));
 
     getrusage(RUSAGE_SELF, &before);
-    unsigned long long result = fib(n, memo);
+    uint64_t result = fib(n, memo);
     getrusage(RUSAGE_SELF, &after);
 
-    // free memory allocated for the memoized array
+    // free memory allocated for the memo array
     free(memo);
 
     time_calc = calculate(&before, &after);
 
-    printf("RESULT:      %llu\n", result);
+    printf("RESULT:      %lu\n", result);
     printf("TIME IN fib: %.2f\n", time_calc);
 
     return 0;
@@ -61,9 +63,9 @@ int main(int argc, char *argv[])
  *
  * Fibonacci sequence: 1, 1, 2, 3, 5, 8, etc.
  */
-unsigned long long fib(int n, unsigned long long *memo)
+uint64_t fib(int n, uint64_t *memo)
 {
-    int result = 0;
+    uint64_t result = 0;
     // base cases
     if (memo[n] != 0)
     {
