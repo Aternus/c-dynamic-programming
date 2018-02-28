@@ -1,7 +1,7 @@
 /**
  * A program to calculate the n^th^ Fibonacci number
  *
- * Using Recursion and Memoization
+ * Uses Recursion and Memoization
  */
 
 #include <stdio.h>

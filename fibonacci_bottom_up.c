@@ -1,7 +1,7 @@
 /**
  * A program to calculate the n^th^ Fibonacci number
  *
- * Using the Bottom Up approach
+ * Uses the Bottom Up approach
  */
 
 #include <stdio.h>
