@@ -55,7 +55,7 @@ int main(int argc, char *argv[])
  *
  * Fibonacci sequence: 1, 1, 2, 3, 5, 8, etc.
  *
- * T(n) = T(n-1) + T(n-2) + O(1) ≈ T(Φ^n) + O(1) ≈ O(2^n^)
+ * T(n) = T(n-1) + T(n-2) + O(1) ≈ T(Φ^n^) + O(1) ≈ O(2^n^)
  */
 uint64_t fib(int n)
 {
