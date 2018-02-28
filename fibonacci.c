@@ -2,8 +2,6 @@
  * A program to calculate the n^th^ Fibonacci number
  *
  * Using Recursion
- *
- * T(n) = O(2^n^)
  */
 
 #include <stdio.h>
@@ -56,6 +54,8 @@ int main(int argc, char *argv[])
  * Calculate the n^th^ Fibonacci number
  *
  * Fibonacci sequence: 1, 1, 2, 3, 5, 8, etc.
+ *
+ * T(n) = T(n-1) + T(n-2) + O(1) ≈ T(Φ^n) + O(1) ≈ O(2^n^)
  */
 uint64_t fib(int n)
 {

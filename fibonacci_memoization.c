@@ -2,8 +2,6 @@
  * A program to calculate the n^th^ Fibonacci number
  *
  * Using Recursion and Memoization
- *
- * T(n) = number of calls to fib() * time = 2n + 1 * 1 = O(2n+1) ≈ O(n)
  */
 
 #include <stdio.h>
@@ -62,6 +60,10 @@ int main(int argc, char *argv[])
  * Calculate the n^th^ Fibonacci number
  *
  * Fibonacci sequence: 1, 1, 2, 3, 5, 8, etc.
+ *
+ * T(n) = #subproblems * time/subproblem * O(1)
+ *
+ *        #calls to fib() * time * O(1) = (2 * n + 1) * 1 * O(1) = O(2n+1) ≈ O(n)
  */
 uint64_t fib(int n, uint64_t *memo)
 {

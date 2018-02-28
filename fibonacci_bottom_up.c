@@ -2,9 +2,6 @@
  * A program to calculate the n^th^ Fibonacci number
  *
  * Using the Bottom Up approach
- *
- * T(n) = O(n)
- * Since we are building the memoization storage once.
  */
 
 #include <stdio.h>
@@ -57,6 +54,10 @@ int main(int argc, char *argv[])
  * Calculate the n^th^ Fibonacci number
  *
  * Fibonacci sequence: 1, 1, 2, 3, 5, 8, etc.
+ *
+ * T(n) = O(n)
+ *
+ *        Since we are building the storage once.
  */
 uint64_t fib(int n)
 {
